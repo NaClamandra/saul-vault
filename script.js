@@ -3,7 +3,7 @@
 const hoverSound = document.getElementById("hoverSound");
 const clickSound = document.getElementById("clickSound");
 const links = document.querySelectorAll(".navbar ul li a");
-const icons = document.querySelectorAll(".social-icons");
+const icons = document.querySelectorAll(".social-icons a");
 
     links.forEach(link => {
       // Sonido al pasar el mouse
