@@ -1,7 +1,7 @@
 body {
   background-color:#000;
   margin:0;
-  overflow:hidden;
+  overflow-x:hidden; /* Cambiado de 'overflow' a 'overflow-x' para permitir scroll vertical si es necesario */
   padding:0;
 }
 
@@ -25,11 +25,11 @@ body {
   box-shadow:0 0 5vmin 1vmin #000 inset;
   box-sizing:border-box;
   font-family:'Fira Mono', monospace;
-  font-size:20px;
-  height:100vh;
-  overflow:hidden;
-  padding:10vmin;
+  font-size: 18px; /* Ajustado para mejor legibilidad base */
+  min-height:100vh; /* Cambiado de height para permitir que el contenido crezca */
   width:100vw;
+  padding: 20px; /* Padding base para móvil */
+  overflow-x: hidden; /* Previene scroll horizontal */
 }
 
 .screen:before {
@@ -38,20 +38,20 @@ body {
   height:20vh;
   left:0;
   opacity:.5;
-  position:absolute;
+  position:fixed;
   right:0;
   z-index:1;
 }
 
 .screen:after {
   background-image:linear-gradient(transparent, transparent 3px, #222);
-  border: 2px solid #0c0; /* 🔹 Borde visible */
+  border: 2px solid #0f0; /* 🔹 CAMBIO: Borde ahora es verde lima (#0f0) */
   background-size:4px 4px;
   bottom:0;
   content:"";
   left:0;
   pointer-events:none;
-  position:absolute;
+  position:fixed;
   right:0;
   top:0;
   z-index:2;
@@ -62,69 +62,73 @@ p:last-child:after {
   content:"_";
 }
 
-/* Navbar container */
+/* Navbar container (Base = Mobile) */
 .navbar {
-display: flex;
-justify-content: space-between;
-align-items: center;
-padding: 10px 30px;
+  display: flex;
+  flex-direction: column; /* Apilado vertical para móvil */
+  align-items: center; /* Centrado para móvil */
+  padding: 15px;
+  width: 100%;
 }
 
-/* Logo or title */
-.navbar .logo {
-color: #fff;
-font-size: 1.5em;
-font-weight: bold;
-text-decoration: none;
-}
-
-/* Nav links */
+/* Nav links (Base = Mobile) */
 .navbar ul {
     list-style: none;
     display: flex;
-    flex: 1;
-    justify-content: space-evenly; /* distribuye uniformemente */
-    margin: 0;
+    flex-direction: column; /* Apilado vertical para móvil */
+    align-items: center;
+    margin: 0 0 20px 0; /* Margen inferior para separar de la imagen */
     padding: 0;
+    width: 100%;
+}
+
+.navbar ul li {
+    margin-bottom: 10px; /* Espacio entre links en móvil */
+    width: 80%;
+    text-align: center;
 }
 
 .navbar ul li a {
     color: #0c0;
     text-decoration: none;
     padding: 8px 15px;
-    border: 2px solid #0c0; /* 🔹 Borde visible */
+    border: 2px solid #0c0;
     transition: background 0.3s, color 0.3s, border-color 0.3s;
+    display: block; /* Ocupa todo el ancho del 'li' */
 }
 
 .navbar ul li a:hover {
-background-color: #0c0;
-color:black
+  background-color: #0c0;
+  color:black;
 }
 
 .navbar img {
-    height: 150; /* ajusta el tamaño */
-    width: 150px;
+    height: 100px; /* Más pequeño para móvil */
+    width: 100px;
     object-fit: contain;
 }
 
+/* Footer (Base = Mobile) */
 footer {
   color: #0c0;
-  padding: 40px 0;
+  padding: 20px 0; /* Padding reducido para móvil */
   font-family: Arial, sans-serif;
-  text-align: center; /* centra el texto */
+  text-align: center;
+  width: 100%;
+  margin-top: 40px; /* Espacio superior */
+  /* Eliminado 'position: fixed' */
 }
 
 .footer-container {
   display: flex;
-  flex-direction: row; /* organiza secciones verticalmente */
-  align-items: center; /* centra horizontalmente */
-  gap: 30px; /* espacio entre secciones */
+  flex-direction: column; /* Apilado vertical para móvil */
+  align-items: center;
+  gap: 20px; /* Espacio reducido */
 }
 
 .footer-section {
-  flex: 1;
-  min-width: 250px;
-  margin: 20px;
+  width: 90%; /* Ocupa la mayor parte del ancho */
+  margin: 10px 0;
 }
 
 .footer-section h4 {
@@ -149,7 +153,7 @@ footer {
 
 .social-icons a {
   color: #0c0;
-  margin-right: 10px;
+  margin: 0 10px; /* Espaciado horizontal */
   font-size: 20px;
   transition: color 0.3s;
 }
@@ -161,18 +165,81 @@ footer {
 .footer-bottom {
   text-align: center;
   padding-top: 20px;
-  font-size: 16px;
+  font-size: 14px; /* Ligeramente más pequeño para móvil */
   color: #0c0;
 }
 
-/* Responsive */
-@media (max-width: 600px) {
-.navbar ul {
-    flex-direction: column;
-    align-items: flex-start;
-}
+/* Responsive (Tablet / Desktop) */
+@media (min-width: 768px) {
+  
+  .screen {
+    font-size: 20px; /* Tamaño de fuente original para desktop */
+    padding: 10vmin; /* Padding original para desktop */
+    /* CAMBIO: Añadido para dejar espacio al footer fijo */
+    padding-bottom: 150px; 
+    z-index: 1;
+  }
+
+  .navbar {
+    flex-direction: row; /* Horizontal en desktop */
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px;
+  }
+
+  .navbar ul {
+    flex-direction: row; /* Horizontal en desktop */
+    flex: 1;
+    justify-content: space-evenly;
+    margin: 0;
+  }
+
+  .navbar ul li {
+    margin-bottom: 0; /* Sin margen inferior en desktop */
+    width: auto;
+  }
+
+  .navbar img {
+      height: 150px; /* Tamaño original en desktop */
+      width: 150px;
+  }
+
+  footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    
+    /* Ajustamos el padding para que coincida con el de .screen */
+    padding: 20px 10vmin; 
+    
+    /* Nos aseguramos que el padding se incluya en el ancho total */
+    box-sizing: border-box;
+    
+    /* Lo ponemos por encima de las animaciones de fondo */
+    z-index: 1; 
+  }
+
+  .footer-container {
+    flex-direction: row; /* Horizontal en desktop */
+    gap: 30px;
+    justify-content: center; /* Centramos el contenido del footer */
+  }
+
+  .footer-section {
+    flex: 1; /* Permite que las secciones crezcan igualmente */
+    min-width: 250px;
+    margin: 0; /* Quitamos margen vertical que no es necesario */
+    width: auto;
+  }
+  
+  .footer-bottom {
+    font-size: 16px; /* Tamaño original en desktop */
+  }
+
 }
 
+/* Animaciones (sin cambios) */
 @keyframes colorPulse {
   0%, 100% {
     color:#0c0;
@@ -198,7 +265,7 @@ footer {
   }
   100% {
     box-shadow:0 -10vh 20vh #0c0;
-    top:200vh;
+    top:120vh; /* <-- ¡Corregido! */
   }
 }
 
