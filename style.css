@@ -57,6 +57,75 @@ body {
   z-index:2;
 }
 
+.screen h1 {
+  color: #0f0; /* Verde lima brillante para destacar */
+  border: 2px solid #0f0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  text-align: left;
+  margin-top: 80px; /* Espacio entre grupos de secciones */
+}
+
+/* El primer H1 de la página no necesita tanto espacio arriba */
+.screen h1:first-of-type {
+  margin-top: 0;
+}
+
+/* Estilo para cada <section> (la "fila" de la tabla) */
+.screen section {
+  border: 2px solid #0f0;
+  
+  /* 2. Relleno interno para que parezca una celda */
+  padding: 20px;
+  
+  margin-top: 30px;
+  /* 1. Separación entre cada 'seccion' */
+  margin-bottom: 60px;
+  
+  /* Opcional: Un fondo oscuro muy sutil para que resalte como bloque */
+  background: rgba(0, 20, 0, 0.1); 
+}
+
+/* Estilo para el <h2> (el título de la experiencia/quest) */
+.screen section h2 {
+  margin-top: 0; /* Quita el margen superior por defecto del h2 */
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+  border-bottom: 2px dashed #0c0; /* Usamos #0c0 (verde texto) para la línea */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Nos aseguramos que el párrafo dentro de la sección no añada espacio extra */
+.screen section p {
+    margin-bottom: 0; 
+}
+
+.screen section ul {
+  /* Quita el margen superior predeterminado de la lista */
+  margin-top: 10; 
+  
+  /* Añade espacio a la izquierda para que la lista no esté pegada al borde */
+  padding-left: 20px; 
+  
+  /* Usa un cuadrado o círculo sólido como viñeta, si quieres cambiarlo */
+  list-style-type: square; 
+}
+
+.screen section ul li {
+    
+    /* Separa un poco cada punto de la lista */
+    margin-bottom: 30px; 
+    
+}
+
+.screen section li:last-child::after{
+  animation:blink 1s infinite;
+  content:"_";
+}
+
 p:last-child:after {
   animation:blink 1s infinite;
   content:"_";
@@ -94,6 +163,7 @@ p:last-child:after {
     padding: 8px 15px;
     border: 2px solid #0c0;
     transition: background 0.3s, color 0.3s, border-color 0.3s;
+    font-size: x-large;
     display: block; /* Ocupa todo el ancho del 'li' */
 }
 
@@ -165,7 +235,7 @@ footer {
 .footer-bottom {
   text-align: center;
   padding-top: 20px;
-  font-size: 14px; /* Ligeramente más pequeño para móvil */
+  font-size: 14px;
   color: #0c0;
 }
 
@@ -173,73 +243,64 @@ footer {
 @media (min-width: 768px) {
   
   .screen {
-    font-size: 20px; /* Tamaño de fuente original para desktop */
-    padding: 10vmin; /* Padding original para desktop */
-    /* CAMBIO: Añadido para dejar espacio al footer fijo */
-    padding-bottom: 150px; 
+    font-size: 20px;
+    padding: 10vmin; 
+    /*padding-bottom: 150px; */
     z-index: 1;
   }
 
   .navbar {
-    flex-direction: row; /* Horizontal en desktop */
+    flex-direction: row; 
     justify-content: space-between;
     align-items: center;
     padding: 10px 30px;
   }
 
   .navbar ul {
-    flex-direction: row; /* Horizontal en desktop */
+    flex-direction: row; 
     flex: 1;
     justify-content: space-evenly;
     margin: 0;
   }
 
   .navbar ul li {
-    margin-bottom: 0; /* Sin margen inferior en desktop */
+    margin-bottom: 0;
     width: auto;
   }
 
   .navbar img {
-      height: 150px; /* Tamaño original en desktop */
+      height: 150px; 
       width: 150px;
   }
 
   footer {
-    position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
-    
-    /* Ajustamos el padding para que coincida con el de .screen */
     padding: 20px 10vmin; 
-    
-    /* Nos aseguramos que el padding se incluya en el ancho total */
     box-sizing: border-box;
-    
-    /* Lo ponemos por encima de las animaciones de fondo */
     z-index: 1; 
   }
 
   .footer-container {
     flex-direction: row; /* Horizontal en desktop */
     gap: 30px;
-    justify-content: center; /* Centramos el contenido del footer */
+    justify-content: center; 
   }
 
   .footer-section {
-    flex: 1; /* Permite que las secciones crezcan igualmente */
+    flex: 1; 
     min-width: 250px;
-    margin: 0; /* Quitamos margen vertical que no es necesario */
+    margin: 0; 
     width: auto;
   }
   
   .footer-bottom {
-    font-size: 16px; /* Tamaño original en desktop */
+    font-size: 16px;
   }
 
 }
 
-/* Animaciones (sin cambios) */
 @keyframes colorPulse {
   0%, 100% {
     color:#0c0;

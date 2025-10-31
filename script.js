@@ -31,3 +31,4 @@ icons.forEach(icon => {
       });
   });
 // Se eliminó la llave '}' extra que estaba aquí
+
