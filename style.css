@@ -15,6 +15,11 @@ body {
   flex-direction: column;
 }
 
+a {
+  color: lime;
+  animation:colorPulse 5s infinite ease-in-out;
+}
+
 .content {
   flex: 1; /* ocupa todo el espacio disponible */
 }
